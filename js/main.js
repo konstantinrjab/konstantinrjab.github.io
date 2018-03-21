@@ -4,9 +4,12 @@
 //         document.getElementById("modal__button").click();
 //     }
 // });
+delete player1;
+delete player2;
+
 function modalSubmit() {
-    // delete player1;
-    // delete player2;
+
+
     let player1;
     let player2;
     //check fighters types
@@ -89,6 +92,20 @@ class Fighter {
             }, that.attack_time
         );
         this.attack_sound.play();
+        this.getPosition();
+    }
+
+    getPosition() {
+        // document.getElementById('icon-fighter-1').style.left = '30px';
+        // document.getElementById('icon-fighter-2').style.left = 300;
+        if (this.number === 1) {
+            document.getElementById('icon-fighter-1').style.left = '30px';
+        } else {
+            document.getElementById('icon-fighter-2').style.left = document.body.clientWidth - this.icon.width + 'px';
+        }
+        console.log(this.icon.width);
+        this.icon.position = this.icon.getBoundingClientRect().left;
+
     }
 
     idle() {
@@ -163,11 +180,6 @@ class Fighter {
     die(winner) {
         this.removeAnimation();
         this.icon.classList.add(this.type + '_death');
-        // delete this.move_right();
-        // delete this.move_left();
-        // delete this.attack();
-        // delete this.icon;
-        // alert('player'+ winner + ' wins!');
         document.getElementById('greeting').innerHTML = 'player' + winner + ' wins!<br>start new game';
         document.getElementById('modal__wrapper_main').style.visibility = 'visible';
         document.getElementById('fighter-1-health').style.width = '90%';
@@ -175,18 +187,18 @@ class Fighter {
     }
 
     removeAnimation() {
-        this.icon.classList.remove(this.type + '_idle', this.type + '_attack');
+        this.icon.classList.remove(this.type + '_idle', this.type + '_attack', this.type + '_death');
     }
 }
 
 class Captain extends Fighter {
     constructor(number) {
-        super(number, 133, 'captain', 300, 30, 90, 100, 10);
+        super(number, 133, 'captain', 300, 15, 90, 100, 10);
     }
 }
 
 class Lieutenant extends Fighter {
     constructor(number) {
-        super(number, 278, 'lieutenant', 500, 15, 180, 80, 7);
+        super(number, 278, 'lieutenant', 500, 20, 180, 80, 7);
     }
 }
