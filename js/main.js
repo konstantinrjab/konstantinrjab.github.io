@@ -4,11 +4,8 @@
 //         document.getElementById("modal__button").click();
 //     }
 // });
-delete player1;
-delete player2;
 
 function modalSubmit() {
-
 
     let player1;
     let player2;
@@ -64,12 +61,23 @@ function gameStart(player1, player2) {
     }
 }
 
-// gameEnd(winner){
-//     console.log(winner);
-// }
+function newGame (winner) {
+    document.getElementById('greeting').innerHTML = 'player' + winner.number + ' wins!<br>start new game';
+    document.getElementById('modal__wrapper_main').style.visibility = 'visible';
+    document.getElementById('fighter-1-health').style.width = '90%';
+    document.getElementById('fighter-2-health').style.width = '90%';
+    document.getElementById('icon-fighter-1').classList.remove('captain', 'captain_idle', 'captain_death', 'lieutenant', 'lieutenant_idle', 'lieutenant_death');
+    document.getElementById('icon-fighter-2').classList.remove('captain', 'captain_idle', 'captain_death', 'lieutenant', 'lieutenant_idle', 'lieutenant_death');
+
+    document.getElementById('icon-fighter-1').style.left = '30px';
+    document.getElementById('icon-fighter-2').style.left = '';
+    document.getElementById('icon-fighter-2').style.right = '30px';
+    // looser.removeAnimation();
+}
 
 class Fighter {
     constructor(number, width, type, attack_time, attack_damage, attack_range, health, move_speed) {
+        // this.startNewGame();
         this.number = number;
         this.type = type;
         this.icon = document.getElementById('icon-fighter-' + number);
@@ -85,27 +93,16 @@ class Fighter {
         this.max_health = health;
         this.move_speed = move_speed;
         this.attack_sound = new Audio('css/' + type + '-attack.mp3');
+
+        this.removeAnimation();
         this.icon.classList.add(this.type + '_attack');
+        // this.removeAnimation();
         let that = this;
         setTimeout(function () {
                 that.idle()
             }, that.attack_time
         );
         this.attack_sound.play();
-        this.getPosition();
-    }
-
-    getPosition() {
-        // document.getElementById('icon-fighter-1').style.left = '30px';
-        // document.getElementById('icon-fighter-2').style.left = 300;
-        if (this.number === 1) {
-            document.getElementById('icon-fighter-1').style.left = '30px';
-        } else {
-            document.getElementById('icon-fighter-2').style.left = document.body.clientWidth - this.icon.width + 'px';
-        }
-        console.log(this.icon.width);
-        this.icon.position = this.icon.getBoundingClientRect().left;
-
     }
 
     idle() {
@@ -140,11 +137,11 @@ class Fighter {
 
             //condition for fighter 1
             if (that.number === 1 && (opponent.model.position - that.model.position) < range && (opponent.model.position - that.model.position) > 0) {
-                opponent.getDamage(that.attack_damage, 1);
+                opponent.getDamage(that.attack_damage, opponent);
             }
             //condition for fighter 2
             if (that.number === 2 && (that.model.position - opponent.model.position) < range && (that.model.position - opponent.model.position) > 0) {
-                opponent.getDamage(that.attack_damage, 2);
+                opponent.getDamage(that.attack_damage, opponent);
             }
         }, that.attack_time * 0.8);
     }
@@ -178,12 +175,12 @@ class Fighter {
     }
 
     die(winner) {
-        this.removeAnimation();
+        // this.removeAnimation();
+        // winner.removeAnimation();
         this.icon.classList.add(this.type + '_death');
-        document.getElementById('greeting').innerHTML = 'player' + winner + ' wins!<br>start new game';
-        document.getElementById('modal__wrapper_main').style.visibility = 'visible';
-        document.getElementById('fighter-1-health').style.width = '90%';
-        document.getElementById('fighter-2-health').style.width = '90%';
+        // let that = this;
+
+        setTimeout(newGame, 1500, winner);
     }
 
     removeAnimation() {
@@ -193,7 +190,7 @@ class Fighter {
 
 class Captain extends Fighter {
     constructor(number) {
-        super(number, 133, 'captain', 300, 15, 90, 100, 10);
+        super(number, 133, 'captain', 300, 16, 90, 100, 10);
     }
 }
 
