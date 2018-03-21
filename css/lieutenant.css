@@ -1,0 +1,21 @@
+.lieutenant {
+  background: url("../img/lieutenant.png");
+  height: 100px;
+  width: 278px; }
+  .lieutenant_idle {
+    animation: lieutenant_idle 1s steps(8) infinite; }
+  .lieutenant_attack {
+    animation: lieutenant_attack 1s steps(8) infinite; }
+
+@keyframes lieutenant_idle {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: 2223px 0; } }
+@keyframes lieutenant_attack {
+  from {
+    background-position: 0 -390px; }
+  to {
+    background-position: -2223px -390px; } }
+
+/*# sourceMappingURL=lieutenant.css.map */

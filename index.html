@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="css/custom.css">
+  <title>Document</title>
+</head>
+<body>
+
+<!-- The Modal -->
+<div class="modal__wrapper_main" id="modal__wrapper_main">
+  <!-- Modal content -->
+  <div class="modal__window" id="modal__window">
+    <div class="modal__wrapper_content">
+      <p class="modal__text modal__text_title" id="greeting">Welcome to bleach drachka</p>
+      <div class="modal__wrapper_left">
+        <p>Player 1</p>
+        <p>Left A right D attack shift</p>
+        <label for="fighter-type-1" class="modal__text">captain</label>
+        <input type="radio" id="fighter-type-1" value="Captain" name="player-1" checked>
+        <label for="fighter-type-2" class="modal__text">lieutenant</label>
+        <input type="radio" id="fighter-type-2" value="Lieutenant" name="player-1">
+      </div>
+      <div class="modal__wrapper_right">
+        <p>Player 2</p>
+        <p>Left &larr; right &rarr; attack enter</p>
+        <label for="fighter-type-3" class="modal__text">captain</label>
+        <input type="radio" id="fighter-type-3" value="Captain" name="player-2">
+        <label for="fighter-type-4" class="modal__text">lieutenant</label>
+        <input type="radio" id="fighter-type-4" value="Lieutenant" name="player-2" checked>
+      </div>
+      <br>
+      <!--<input type="text" id="modal__input">-->
+      <button class="modal__button" id="modal__button" onclick="modalSubmit()">fight!
+      </button>
+    </div>
+  </div>
+</div>
+<!--Health Bar-->
+<div class="info info__1">
+  <p class="info__text">Health player 1</p>
+  <div class="info__health info__health_bar info__health_1" id="info__health_1" style="width: 90%;"></div>
+  <div class="info__health info__health_current" id="fighter-1-health" style="width: 90%;"></div>
+</div>
+<div class="info info__2">
+  <p class="info__text">Health player 2</p>
+  <div class="info__health info__health_bar info__health_2" id="info__health_2" style="width: 90%;"></div>
+  <div class="info__health info__health_current" id="fighter-2-health" style="width: 90%;"></div>
+</div>
+
+<!--Fighters-->
+<div class="fighter-icon" id="icon-fighter-1">
+  <div class="model-fighter" id="model-fighter-1"></div>
+</div>
+<div class="fighter-icon" id="icon-fighter-2">
+  <div class="model-fighter" id="model-fighter-2"></div>
+</div>
+<!--<div class="fighter" id="fighter-2" style="left: 30px"></div>-->
+<script src="js/main.js"></script>
+</body>
+</html>

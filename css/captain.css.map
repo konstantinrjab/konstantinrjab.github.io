@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AACA,QAAQ;EACN,UAAU,EAAE,4BAA4B;EACxC,MAAM,EAAE,KAAK;EAEb,KAAK,EAAE,KAAK;EACZ,aAAM;IACJ,SAAS,EAAE,iCAAiC;EAC9C,eAAQ;IACN,SAAS,EAAE,mCAAmC;;;;IAM9C,mBAAmB,EAAE,GAAG;;IAExB,mBAAmB,EAAE,SAAS;;;IAG9B,mBAAmB,EAAE,QAAQ;;IAE7B,mBAAmB,EAAE,cAAc",
+"sources": ["captain.sass"],
+"names": [],
+"file": "captain.css"
+}

@@ -1,0 +1,30 @@
+//1064px
+.captain
+  background: url("../img/captain.png")
+  height: 100px
+  //1064px/8
+  width: 133px
+  &_idle
+    animation: captain_idle 1s steps(8) infinite
+  &_attack
+    animation: captain_attack 0.3s steps(8) infinite
+  &_death
+    animation: captain_death 1s steps(6)
+    animation-fill-mode: forwards
+  //90 6
+
+@keyframes captain_idle
+  from
+    background-position: 0 0
+  to
+    background-position: -1064px 0
+@keyframes captain_attack
+  from
+    background-position: 0 -350px
+  to
+    background-position: -1064px -350px
+@keyframes captain_death
+  from
+    background-position: 0 -770px
+  to
+    background-position: -798px -770px

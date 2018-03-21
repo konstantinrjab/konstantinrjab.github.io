@@ -1,0 +1,21 @@
+.captain {
+  background: url("../img/captain-ph.png");
+  height: 100px;
+  width: 133px; }
+  .captain_idle {
+    animation: captain_idle 1s steps(8) infinite; }
+  .captain_attack {
+    animation: captain_attack 1s steps(8) infinite; }
+
+@keyframes captain_idle {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: -1064px 0; } }
+@keyframes captain_attack {
+  from {
+    background-position: 0 -350px; }
+  to {
+    background-position: -1064px -350px; } }
+
+/*# sourceMappingURL=captain.css.map */

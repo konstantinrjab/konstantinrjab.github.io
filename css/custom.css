@@ -1,0 +1,137 @@
+.captain {
+  background: url("../img/captain.png");
+  height: 100px;
+  width: 133px; }
+  .captain_idle {
+    animation: captain_idle 1s steps(8) infinite; }
+  .captain_attack {
+    animation: captain_attack 0.3s steps(8) infinite; }
+  .captain_death {
+    animation: captain_death 1s steps(6);
+    animation-fill-mode: forwards; }
+
+@keyframes captain_idle {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: -1064px 0; } }
+@keyframes captain_attack {
+  from {
+    background-position: 0 -350px; }
+  to {
+    background-position: -1064px -350px; } }
+@keyframes captain_death {
+  from {
+    background-position: 0 -770px; }
+  to {
+    background-position: -798px -770px; } }
+.lieutenant {
+  background: url("../img/lieutenant.png") 0 0;
+  height: 100px;
+  width: 278px; }
+  .lieutenant_idle {
+    animation: lieutenant_idle 1s steps(8) infinite; }
+  .lieutenant_attack {
+    animation: lieutenant_attack 0.5s steps(8) infinite; }
+  .lieutenant_death {
+    animation: lieutenant_death 1s steps(6);
+    animation-fill-mode: forwards; }
+  .lieutenant #model-fighter-2 {
+    margin-left: 40px; }
+  .lieutenant #model-fighter-1 {
+    margin-left: 40px; }
+
+@keyframes lieutenant_idle {
+  from {
+    background-position: 0 0; }
+  to {
+    background-position: 2223px 0; } }
+@keyframes lieutenant_attack {
+  from {
+    background-position: 0 -390px; }
+  to {
+    background-position: -2223px -390px; } }
+@keyframes lieutenant_death {
+  from {
+    background-position: 0 -620px; }
+  to {
+    background-position: -1667px -620px; } }
+body {
+  margin: 0;
+  background: url("../img/arena.png") no-repeat center top fixed;
+  background-size: cover;
+  text-transform: uppercase;
+  cursor: default !important;
+  height: 100vh; }
+
+.fighter-icon {
+  position: absolute;
+  margin-top: 40vh; }
+
+#icon-fighter-2 {
+  transform: scale(-1, 1);
+  right: 30px; }
+
+.model-fighter {
+  height: 100%;
+  width: 40px;
+  margin: 5px 0 5px 10px; }
+
+.info {
+  display: inline-block;
+  background-color: gray;
+  height: 10vh;
+  width: 25vw;
+  border: 2px solid black;
+  margin: 10px;
+  position: relative; }
+  .info__2 {
+    float: right; }
+  .info__health {
+    position: absolute;
+    margin: 10px 0 0 15px; }
+    .info__health_bar {
+      height: 15px;
+      background-color: red; }
+    .info__health_current {
+      height: 15px;
+      background-color: green; }
+  .info__text {
+    margin: 5px 5px 0 15px;
+    font-size: 13px; }
+
+.modal__wrapper_main {
+  background: rgba(0, 0, 0, 0.5);
+  background-size: cover;
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  z-index: 2; }
+.modal__wrapper_content {
+  margin: 20px; }
+.modal__wrapper_left {
+  display: inline-block;
+  margin-left: 0;
+  width: 50%; }
+.modal__wrapper_right {
+  display: inline-block;
+  margin-right: 0; }
+.modal__window {
+  margin: 25vh auto;
+  height: 50vh;
+  width: 90vw;
+  background: gray; }
+.modal__text {
+  color: black; }
+  .modal__text_title {
+    padding-top: 15px;
+    text-align: center; }
+.modal__button {
+  margin: 30px auto;
+  background: grey;
+  border: 2px solid black;
+  color: black;
+  height: 50px;
+  width: 100px; }
+
+/*# sourceMappingURL=custom.css.map */

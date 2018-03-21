@@ -1,0 +1,36 @@
+//2223px
+.lieutenant
+  background: url("../img/lieutenant.png") 0 0
+  height: 100px
+  //2223px/8
+  width: 278px
+  &_idle
+    animation: lieutenant_idle 1s steps(8) infinite
+  &_attack
+    animation: lieutenant_attack 0.5s steps(8) infinite
+  &_death
+    animation: lieutenant_death 1s steps(6)
+    animation-fill-mode: forwards
+  #model-fighter-2
+    margin-left: 40px
+
+  #model-fighter-1
+    margin-left: 40px
+
+  //170 5 600max
+
+@keyframes lieutenant_idle
+  from
+    background-position: 0 0
+  to
+    background-position: 2223px 0
+@keyframes lieutenant_attack
+  from
+    background-position: 0 -390px
+  to
+    background-position: -2223px -390px
+@keyframes lieutenant_death
+  from
+    background-position: 0 -620px
+  to
+    background-position: -1667px -620px
