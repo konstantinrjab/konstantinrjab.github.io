@@ -62,11 +62,11 @@ body {
   background-size: cover;
   text-transform: uppercase;
   cursor: default !important;
-  height: 100vh; }
+  height: 100vh;
+  position: relative; }
 
 .fighter-icon {
-  position: absolute;
-  margin-top: 40vh; }
+  position: absolute; }
 
 #icon-fighter-2 {
   transform: scale(-1, 1);

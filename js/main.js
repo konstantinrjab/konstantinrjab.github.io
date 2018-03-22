@@ -55,13 +55,23 @@ function gameStart(player1, player2) {
         if (map[39]) {
             player2.move_right();
         }
+        if (map[87]) {
+            if(!player1.icon.classList.contains(player1.type+'_jump')){
+                player1.jump(20);
+            }
+        }
+        if (map[38]) {
+            if(!player2.icon.classList.contains(player2.type+'_jump')){
+                player2.jump(20);
+            }
+        }
         setTimeout(function () {
             testKeys(map, player1, player2)
-        }, 10);
+        }, 20);
     }
 }
 
-function newGame (winner) {
+function newGame(winner) {
     document.getElementById('greeting').innerHTML = 'player' + winner.number + ' wins!<br>start new game';
     document.getElementById('modal__wrapper_main').style.visibility = 'visible';
     document.getElementById('fighter-1-health').style.width = '90%';
@@ -77,7 +87,6 @@ function newGame (winner) {
 
 class Fighter {
     constructor(number, width, type, attack_time, attack_damage, attack_range, health, move_speed) {
-        // this.startNewGame();
         this.number = number;
         this.type = type;
         this.icon = document.getElementById('icon-fighter-' + number);
@@ -86,6 +95,8 @@ class Fighter {
         this.icon.position = this.icon.getBoundingClientRect().left;
         this.model = document.getElementById('model-fighter-' + number);
         this.model.position = this.model.getBoundingClientRect().left;
+        this.icon.top = this.icon.getBoundingClientRect().top;
+
         this.attack_time = attack_time;
         this.attack_damage = attack_damage;
         this.attack_range = attack_range;
@@ -94,6 +105,11 @@ class Fighter {
         this.move_speed = move_speed;
         this.attack_sound = new Audio('css/' + type + '-attack.mp3');
 
+        //vertical position
+        this.icon.style.top = '400px';
+        this.icon.top = 400;
+
+        //attack on game start
         this.removeAnimation();
         this.icon.classList.add(this.type + '_attack');
         // this.removeAnimation();
@@ -136,12 +152,12 @@ class Fighter {
             }
 
             //condition for fighter 1
-            if (that.number === 1 && (opponent.model.position - that.model.position) < range && (opponent.model.position - that.model.position) > 0) {
-                opponent.getDamage(that.attack_damage, opponent);
+            if (that.number === 1 && (opponent.model.position - that.model.position) < range && (opponent.model.position - that.model.position) > 0 && Math.abs(that.icon.top - opponent.icon.top) < 50) {
+                opponent.getDamage(that.attack_damage, that);
             }
             //condition for fighter 2
-            if (that.number === 2 && (that.model.position - opponent.model.position) < range && (that.model.position - opponent.model.position) > 0) {
-                opponent.getDamage(that.attack_damage, opponent);
+            if (that.number === 2 && (that.model.position - opponent.model.position) < range && (that.model.position - opponent.model.position) > 0 && Math.abs(that.icon.top - opponent.icon.top) < 50) {
+                opponent.getDamage(that.attack_damage, that);
             }
         }, that.attack_time * 0.8);
     }
@@ -161,6 +177,21 @@ class Fighter {
             this.icon.position = this.icon.position - this.move_speed;
             this.icon.style.left = this.icon.position + 'px';
             this.model.position = this.model.getBoundingClientRect().left;
+        }
+    }
+
+    jump(value) {
+        let that = this;
+        this.icon.top -= value;
+        this.icon.classList.add(this.type+'_jump');
+        this.icon.style.top = this.icon.top + 'px';
+        if (this.icon.top < 400) {
+            value = value - 1;
+            setTimeout(function () {
+                that.jump(value);
+            }, 20);
+        } else {
+            this.icon.classList.remove(this.type+'_jump')
         }
     }
 
